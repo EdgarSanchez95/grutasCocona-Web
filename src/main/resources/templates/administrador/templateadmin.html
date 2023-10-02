@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{css/styles.css}">
+</head>
+
+<body>
+
+  <!--navegacion-->
+  <div th:fragment="header">
+    <header class="header">
+      <div class="menu container">
+        <a href="#" class="Logo">Las Grutas</a>
+        <input type="checkbox" id="menu">
+        <label for="menu">
+          <img src="" class="menu-icono" alt="">
+        </label>
+        <nav class="navbar">
+          <ul>
+            <li> <a href="#">Inicio</a></li>
+            <li> <a href="#">Servicios</a></li>
+            <li> <a href="#">Productos</a></li>
+            <li> <a href="#">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-content container">
+        <h1>Las Grutas Del Cocona</h1>
+        <p>
+          Las Grutas de Coconá se encuentran en un área natural protegida, bajo la denominación de Monumento
+          natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
+          ciudad de Villahermosa, capital del estado de Tabasco, México.
+        </p>
+        <a href="#" class="btn-1">Información</a>
+      </div>
+    </header><!--navegacion-->
+  </div>
+
+
+
+  <!--footer-->
+  <div th:fragment="footer">
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Grutas del Cocona 2023</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+  </div>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
