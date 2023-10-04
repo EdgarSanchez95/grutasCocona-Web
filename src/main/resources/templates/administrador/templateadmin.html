@@ -4,7 +4,7 @@
   <div th:fragment="header">
     <header class="header">
       <div class="menu container">
-        <a href="#" class="Logo">Las Grutas</a>
+        <a th:href="@{/administrador}" class="Logo">Las Grutas</a>
         <input type="checkbox" id="menu">
         <label for="menu">
           <img src="" class="menu-icono" alt="">
@@ -13,8 +13,8 @@
           <ul>
             <li> <a href="#">Inicio</a></li>
             <li> <a href="#">Servicios</a></li>
-            <li> <a href="#">Productos</a></li>
-            <li> <a href="#">Contacto</a></li>
+            <li> <a th:href="@{/productos}">Productos</a></li>
+            <li> <a href="#">ADMIN</a></li>
           </ul>
         </nav>
       </div>
