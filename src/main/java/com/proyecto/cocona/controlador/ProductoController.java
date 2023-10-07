@@ -4,6 +4,7 @@ package com.proyecto.cocona.controlador;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,8 @@ public class ProductoController {
     private ProductoServicio productoServicio;
 
     @GetMapping("")
-    public String show(){
+    public String show(Model model){ //el parametro model lleva la informacion del backend a la vista
+        model.addAttribute("productos", productoServicio.findAll());
         return "productos/show";  //nos redirige al show.html
     }
 

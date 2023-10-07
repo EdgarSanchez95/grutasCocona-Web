@@ -1,5 +1,6 @@
 package com.proyecto.cocona.servicio;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class ProductoServicioImple implements ProductoServicio {
     @Override
     public void delete(Integer id) {
         productoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Producto> findAll() {
+        return productoRepository.findAll();
     }
     
 }

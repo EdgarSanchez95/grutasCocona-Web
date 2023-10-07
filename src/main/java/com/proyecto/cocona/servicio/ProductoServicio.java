@@ -1,5 +1,6 @@
 package com.proyecto.cocona.servicio;
 
+import java.util.List;
 import java.util.Optional;
 
 import com.proyecto.cocona.modelo.Producto;
@@ -15,5 +16,7 @@ public interface ProductoServicio {
     public void update(Producto producto);
 
     public void delete(Integer id);
+
+    public List<Producto> findAll(); //metodo para mostrar la lista de productos
 
 }
