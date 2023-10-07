@@ -1,11 +1,14 @@
 package com.proyecto.cocona.controlador;
 
 
+import java.util.Optional;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,6 +42,24 @@ public class ProductoController {
         Usuario u = new Usuario(1, "", "", "", "", "", "", "");
         producto.setUsuario(u);
         productoServicio.save(producto);
+        return "redirect:/productos";
+    }
+
+    @GetMapping("/edit/{id}")     //este metodo se crea para editar un producto
+    public String edit(@PathVariable Integer id, Model model){
+        Producto producto = new Producto();
+        Optional<Producto> optionalProducto = productoServicio.get(id);
+        producto = optionalProducto.get();
+
+        LOGGER.info("Producto buscado: {}", producto);
+        model.addAttribute("producto", producto);
+        return "productos/edit";
+    }
+
+    @PostMapping("/update")    //metodo para actualizar el producto
+    public String update(Producto producto){
+
+        productoServicio.update(producto);
         return "redirect:/productos";
     }
 }
