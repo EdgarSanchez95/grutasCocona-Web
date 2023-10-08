@@ -14,7 +14,7 @@ public class GuardarImagenServicio {  //clase para subir imagen del producto al 
     private String folder = "imagenes//";
 
     public String guardarImagen(MultipartFile file) throws IOException {
-        if (file.isEmpty()) {
+        if (!file.isEmpty()) {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(folder + file.getOriginalFilename());
             Files.write(path, bytes);
