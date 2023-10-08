@@ -1,6 +1,7 @@
 package com.proyecto.cocona.controlador;
 
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.slf4j.*;
@@ -11,9 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proyecto.cocona.modelo.Producto;
 import com.proyecto.cocona.modelo.Usuario;
+import com.proyecto.cocona.servicio.GuardarImagenServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
 
 @Controller
@@ -24,6 +28,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoServicio productoServicio;
+
+    @Autowired
+    private GuardarImagenServicio guardarImagen;
 
     @GetMapping("")
     public String show(Model model){ //el parametro model lleva la informacion del backend a la vista
@@ -37,10 +44,25 @@ public class ProductoController {
     } 
 
     @PostMapping("/save")
-    public String save(Producto producto){  //metodo para guardar el producto a la base de datos
+    public String save(Producto producto, @RequestParam("img") MultipartFile file) throws IOException{  //metodo para guardar el producto a la base de datos
         LOGGER.info("Este es el objeto producto {}", producto);
         Usuario u = new Usuario(1, "", "", "", "", "", "", "");
         producto.setUsuario(u);
+
+        //imagen
+        if(producto.getId() == null){// cuando se crea un producto
+            String nombreImagen = guardarImagen.guardarImagen(file);
+            producto.setImagen(nombreImagen);
+        }else{
+            if(file.isEmpty()){ // cuando editamos el producto pero no cambiamos la imagen
+                Producto p = new Producto();
+                p = productoServicio.get(producto.getId()).get();
+                producto.setImagen(p.getImagen());
+            }else{ // para cambiar la imagen
+                String nombreImagen = guardarImagen.guardarImagen(file);
+                producto.setImagen(nombreImagen);
+            }
+        }
         productoServicio.save(producto);
         return "redirect:/productos";
     }

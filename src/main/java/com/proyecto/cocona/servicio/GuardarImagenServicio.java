@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class GuardarImagenServicio {
+public class GuardarImagenServicio {  //clase para subir imagen del producto al servidor
     private String folder = "imagenes//";
 
     public String guardarImagen(MultipartFile file) throws IOException {
