@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{css/styles.css}">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="menu container">
+      <a href="#" class="Logo">Las Grutas</a>
+      <form class="form-inline my-2 my-lg-0" method="post" action="#">
+        <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="nombre"
+          autocomplete="off">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+      <input type="checkbox" id="menu">
+      <label for="menu">
+        <img src="" class="menu-icono" alt="">
+      </label>
+      <nav class="navbar">
+        <ul>
+          <li> <a href="#">Inicio</a></li>
+          <li> <a href="#">Carrito</a></li>
+          <li> <a href="#">Productos</a></li>
+          <li> <a href="#">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header-content container">
+      <h1>Las Grutas Del Cocona</h1>
+      <p>
+        Las Grutas de Coconá se encuentran en un área natural protegida, bajo la denominación de Monumento
+        natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
+        ciudad de Villahermosa, capital del estado de Tabasco, México.
+      </p>
+      <a href="#" class="btn-1">Información</a>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Bienvenido a Grutas del Cocona</h1>
+      <p class="lead">Tu tienda de productos en Línea</p>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 mb-4" th:each="producto:${productos}">
+        <div class="card h-100">
+          <img class="card-img-top img-fluid mx-auto d-block" th:src="@{/imagenes/{img} (img=${producto.imagen})}"
+            alt="" style="max-height: 250px; max-width: 250px; object-fit: cover;">
+          <div class="card-body">
+            <p class="card-text" th:text="${producto.nombre}"></p>
+          </div>
+          <div class="card-footer">
+            <a href="productohome.html" class="btn btn-success">Ver producto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Grutas del Cocona 2023</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

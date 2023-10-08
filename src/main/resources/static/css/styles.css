@@ -515,3 +515,16 @@ background-color: #834c31;
  .alinear-derecha {
     justify-content: flex-end;
  }
+
+ 
+  /* Cambia el color del botón a rojo */
+  .btn-outline-success {
+    color: #fff; /* Cambia el color del texto a blanco */
+    background-color: #e26fae; /* Cambia el color de fondo a rojo */
+    border-color: #e26fae; /* Cambia el color del borde a rojo */
+  }
+
+  .btn-outline-success:hover {
+   background-color: #834c31; /* Cambia el color de fondo a rojo */
+   border-color: #834c31; /* Cambia el color del borde a rojo */
+ }
