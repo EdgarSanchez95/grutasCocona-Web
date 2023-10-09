@@ -528,3 +528,17 @@ background-color: #834c31;
    background-color: #834c31; /* Cambia el color de fondo a rojo */
    border-color: #834c31; /* Cambia el color del borde a rojo */
  }
+
+ .custom-img-class {
+   max-width: 500px; /* Ajustar al ancho máximo de su contenedor */
+   height: 325px;   /* Mantener la proporción de aspecto original */
+   display: block; /* Centrar la imagen horizontalmente */
+   margin: 0 auto; /* Alinear horizontalmente */
+ }
+
+ 
+ 
+ 
+ 
+ 
+ 
