@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -7,6 +7,8 @@
   <title>Document</title>
   <link rel="stylesheet" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{css/styles.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
 
 <body>
@@ -27,9 +29,8 @@
         </label>
         <nav class="navbar">
           <ul>
-            <li> <a href="#">Inicio</a></li>
             <li> <a th:href="@{/getCart}">Carrito</a></li>
-            <li> <a href="#">Productos</a></li>
+            <li> <a th:href="@{/}">Productos</a></li>
             <li> <a href="#">Login</a></li>
           </ul>
         </nav>
@@ -42,7 +43,7 @@
           natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
           ciudad de Villahermosa, capital del estado de Tabasco, México.
         </p>
-        <a href="#" class="btn-1">Información</a>
+        <a th:href="@{/getActividades}" class="btn-1">Actividades</a>
       </div>
     </header>
 
@@ -55,15 +56,17 @@
   <div th:fragment="footer">
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Grutas del Cocona 2023</p>
+        <p class="m-0 text-center text-white">
+          Copyright &copy; Grutas del Cocona 2023
+          <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="text-white">
+            <i class="fab fa-whatsapp" style="margin-left: 80%;"></i> Contáctanos en WhatsApp
+          </a>
+        </p>
       </div>
-      <!-- /.container -->
     </footer>
+    
   </div>
-  
-
-
-  <!-- Bootstrap core JavaScript -->
+    <!-- Bootstrap core JavaScript -->
   <script th:src="@{vendor/jquery/jquery.min.js}"></script>
   <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 

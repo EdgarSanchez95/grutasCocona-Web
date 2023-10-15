@@ -8,9 +8,7 @@
    list-style: none;
 }
 
-html {
-   background-color: #e26fae;
-}
+
 
 body {
    font-family: 'Poppins', sans-serif;
@@ -430,6 +428,7 @@ background-color: #834c31;
  /*Contacto*/
  .formulario{
     background-color: #154360;
+    max-height: 430px;
     width: 100%; /*Utlizar el valor mas pequeño*/
     margin: 0 auto;
     padding: 2rem;
@@ -438,11 +437,12 @@ background-color: #834c31;
  
  
  .formulario legend {
+   
     text-align: center;
-    font-size: 1.8rem;
+    font-size: .6rem;
     text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
     color: white;
  }
  @media(min-width: 768px) {
@@ -457,7 +457,7 @@ background-color: #834c31;
  }
  
  .campo {
-    margin-bottom: .8rem;
+    margin-bottom: 4rem;
  }
  .campo label {
     color: white;
@@ -466,20 +466,22 @@ background-color: #834c31;
     display: block;
  }
  .campo textarea {
-    height: 20rem;
+    max-height: 6rem;
+    margin-bottom: -2rem;
  }
  .input-text {
     width: 100%;
     border: none;
     padding: 1.5rem;
     border-radius: .5rem;
+    max-height: 2rem;
  }
  
  .boton {
     background-color: #e26fae;
     color: white;
     padding: 1rem 3rem;
-    margin-top: 3rem;
+    margin-top: -10px;
     font-size: 1rem;
     text-decoration: none;
     text-transform: uppercase;
@@ -509,11 +511,9 @@ background-color: #834c31;
         width: auto;
     }
  }
- .flex {
-    display: flex;
- }
+ 
  .alinear-derecha {
-    justify-content: flex-end;
+    text-align: center;
  }
 
  
@@ -526,7 +526,7 @@ background-color: #834c31;
 
   .btn-outline-success:hover {
    background-color: #834c31; /* Cambia el color de fondo a rojo */
-   border-color: #834c31; /* Cambia el color del borde a rojo */
+   border-color: #000000; /* Cambia el color del borde a rojo */
  }
 
  .custom-img-class {
@@ -536,9 +536,15 @@ background-color: #834c31;
    margin: 0 auto; /* Alinear horizontalmente */
  }
 
+
+ .btn-success {
+   background-color: #e26fae;
+   color: #000000;
+ }
  
- 
- 
- 
+ .btn-success:hover{
+   background-color: #834c31;
+   border-color: #000000;
+ }
  
  

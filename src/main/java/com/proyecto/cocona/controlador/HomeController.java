@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.proyecto.cocona.modelo.DetalleOrden;
 import com.proyecto.cocona.modelo.Orden;
 import com.proyecto.cocona.modelo.Producto;
+import com.proyecto.cocona.modelo.Usuario;
+import com.proyecto.cocona.servicio.IUsuarioServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
 
 @Controller
@@ -30,6 +32,9 @@ public class HomeController {
 
      @Autowired
      private ProductoServicio productoServicio;
+
+     @Autowired
+     private IUsuarioServicio usuarioServicio;
 
      //para almacenar los detalles de la orden
      List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
@@ -123,8 +128,18 @@ public class HomeController {
         return "/usuario/carrito";
     }
 
+    @GetMapping("/getActividades")
+    public String actividades(){
+        return "/usuario/actividades";
+    }
+
     @GetMapping("/resumenOrden")
-    public String orden(){
+    public String orden(Model model){
+
+        Usuario usuario = usuarioServicio.findById(1).get(); //id como prueba el valor directo del id se va a cambiar
+        model.addAttribute("cart", detalles);
+        model.addAttribute("orden", orden);
+        model.addAttribute("usuario", usuario);
         return "usuario/resumenorden";
     }
 }

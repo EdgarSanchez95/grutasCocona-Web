@@ -1,0 +1,26 @@
+package com.proyecto.cocona.servicio;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.proyecto.cocona.modelo.Usuario;
+import com.proyecto.cocona.repository.IUsuarioRepository;
+
+@Service
+public class UsuarioServicioImple implements IUsuarioServicio{
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+    @Override
+    public Optional<Usuario> findById(Integer id) {
+        return usuarioRepository.findById(id);
+    }
+
+
+   
+    
+
+}
