@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.proyecto.cocona.modelo.Producto;
 
-@Repository                                                      //la interfaz extiende a JpaRepository para la clase producto
-public interface ProductoRepository extends JpaRepository<Producto, Integer> {
+@Repository                 //la interfaz extiende a JpaRepository para la clase producto
+public interface IProductoRepository extends JpaRepository<Producto, Integer> {
     
 }

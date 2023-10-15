@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.cocona.modelo.Producto;
-import com.proyecto.cocona.repository.ProductoRepository;
+import com.proyecto.cocona.repository.IProductoRepository;
 
 @Service
 public class ProductoServicioImple implements ProductoServicio {
 
     @Autowired    //sirve para poder inyectar un objeto
-    private ProductoRepository productoRepository;
+    private IProductoRepository productoRepository;
 
     @Override
     public Producto save(Producto producto) {
