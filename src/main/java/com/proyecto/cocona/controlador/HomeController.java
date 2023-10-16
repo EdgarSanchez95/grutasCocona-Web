@@ -1,7 +1,5 @@
 package com.proyecto.cocona.controlador;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +19,8 @@ import com.proyecto.cocona.modelo.DetalleOrden;
 import com.proyecto.cocona.modelo.Orden;
 import com.proyecto.cocona.modelo.Producto;
 import com.proyecto.cocona.modelo.Usuario;
+import com.proyecto.cocona.servicio.IDetalleOrdenServicio;
+import com.proyecto.cocona.servicio.IOrdenServicio;
 import com.proyecto.cocona.servicio.IUsuarioServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
 
@@ -35,6 +35,12 @@ public class HomeController {
 
      @Autowired
      private IUsuarioServicio usuarioServicio;
+
+     @Autowired
+     private IOrdenServicio ordenServicio;
+
+     @Autowired
+     private IDetalleOrdenServicio detalleOrdenServicio;
 
      //para almacenar los detalles de la orden
      List<DetalleOrden> detalles = new ArrayList<DetalleOrden>();
@@ -141,5 +147,34 @@ public class HomeController {
         model.addAttribute("orden", orden);
         model.addAttribute("usuario", usuario);
         return "usuario/resumenorden";
+    }
+
+      //guardar la orden
+    @GetMapping("/saveOrden")
+    public String saveOrden(){
+
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        
+        // Luego puedes usar sqlDate en tu método setFechaCreacion
+        orden.setFechaCreacion(sqlDate);
+        orden.setNumero(ordenServicio.generarNumeroOrden());
+
+        //usuario
+        Usuario usuario = usuarioServicio.findById(1).get();
+
+        orden.setUsuario(usuario);
+        ordenServicio.save(orden);
+
+        //guardar detalles
+        for(DetalleOrden dt:detalles){
+            dt.setOrden(orden);
+            detalleOrdenServicio.save(dt);
+        }
+
+        //limpiar lista y orden
+        orden = new Orden();
+        detalles.clear();
+        return "redirect:/";
     }
 }
