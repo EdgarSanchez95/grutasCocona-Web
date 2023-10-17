@@ -6,4 +6,6 @@ import com.proyecto.cocona.modelo.Usuario;
 
 public interface IUsuarioServicio {
     Optional<Usuario> findById(Integer id);
+
+    Usuario save (Usuario usuario);
 }
