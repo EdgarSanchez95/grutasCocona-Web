@@ -24,6 +24,11 @@ public class UsuarioServicioImple implements IUsuarioServicio{
         return usuarioRepository.save(usuario);
     }
 
+    @Override
+    public Optional<Usuario> findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
 
    
     
