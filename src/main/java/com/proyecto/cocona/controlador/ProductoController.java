@@ -17,7 +17,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.proyecto.cocona.modelo.Producto;
 import com.proyecto.cocona.modelo.Usuario;
 import com.proyecto.cocona.servicio.GuardarImagenServicio;
+import com.proyecto.cocona.servicio.IUsuarioServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/productos")
@@ -27,6 +30,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoServicio productoServicio;
+
+    @Autowired
+    private IUsuarioServicio usuarioServicio;
 
     @Autowired
     private GuardarImagenServicio guardarImagen;
@@ -43,12 +49,12 @@ public class ProductoController {
     }
 
     @PostMapping("/save")
-    public String save(Producto producto, @RequestParam("img") MultipartFile file) throws IOException { // metodo para
+    public String save(Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException { // metodo para
                                                                                                         // guardar el
                                                                                                         // producto a la
                                                                                                         // base de datos
         LOGGER.info("Este es el objeto producto {}", producto);
-        Usuario u = new Usuario(1, "", "", "", "", "", "", "");
+        Usuario u = usuarioServicio.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
         producto.setUsuario(u);
 
         // imagen

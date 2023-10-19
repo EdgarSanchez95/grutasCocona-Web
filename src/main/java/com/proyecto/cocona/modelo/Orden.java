@@ -6,9 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
+//import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.sql.Date;
+import java.util.List;
+
 import lombok.Data;
 import lombok.ToString;
 
@@ -35,14 +38,11 @@ public class Orden {
     private Usuario usuario;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "orden") //relacion uno a uno
-    private DetalleOrden detalle;
+    @OneToMany(mappedBy = "orden") //relacion uno a uno
+    private List<DetalleOrden> detalle;
     
-    public Orden(){
-    
-    }
-
-    public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total, Usuario usuario, DetalleOrden detalle) {
+    public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, Double total, Usuario usuario,
+            List<DetalleOrden> detalle) {
         this.id = id;
         this.numero = numero;
         this.fechaCreacion = fechaCreacion;
@@ -51,4 +51,12 @@ public class Orden {
         this.usuario = usuario;
         this.detalle = detalle;
     }
+
+    public Orden(){
+    
+    }
+
+    
+
+    
 }

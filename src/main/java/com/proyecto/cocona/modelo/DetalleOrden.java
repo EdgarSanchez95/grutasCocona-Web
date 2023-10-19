@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
@@ -28,14 +27,17 @@ public class DetalleOrden {
     private double total;
 
     @ToString.Exclude
-    @OneToOne
+    @ManyToOne
     private Orden orden;
 
     @ToString.Exclude
     @ManyToOne
     private Producto producto;
     
-    public DetalleOrden(Integer id, String nombre, double cantidad, double precio, double total, Orden orden, Producto producto) {
+    
+
+    public DetalleOrden(Integer id, String nombre, double cantidad, double precio, double total, Orden orden,
+            Producto producto) {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
@@ -44,6 +46,8 @@ public class DetalleOrden {
         this.orden = orden;
         this.producto = producto;
     }
+
+
 
     public DetalleOrden() {
     }

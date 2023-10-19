@@ -25,6 +25,8 @@ import com.proyecto.cocona.servicio.IOrdenServicio;
 import com.proyecto.cocona.servicio.IUsuarioServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/")
 public class HomeController {
@@ -50,8 +52,9 @@ public class HomeController {
      Orden orden = new Orden();
 
     @GetMapping("")
-    public String home(Model model){
+    public String home(Model model, HttpSession session){
        
+        log.info("Sesion del usuario: {}", session.getAttribute("idusuario"));
         model.addAttribute("productos", productoServicio.findAll());
         return "usuario/home";
     }
@@ -141,9 +144,9 @@ public class HomeController {
     }
 
     @GetMapping("/resumenOrden")
-    public String orden(Model model){
+    public String orden(Model model, HttpSession session){
 
-        Usuario usuario = usuarioServicio.findById(1).get(); //id como prueba el valor directo del id se va a cambiar
+        Usuario usuario = usuarioServicio.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get(); //id como prueba el valor directo del id se va a cambiar
         model.addAttribute("cart", detalles);
         model.addAttribute("orden", orden);
         model.addAttribute("usuario", usuario);
@@ -152,7 +155,7 @@ public class HomeController {
 
       //guardar la orden
     @GetMapping("/saveOrden")
-    public String saveOrden(){
+    public String saveOrden(HttpSession session){
 
         java.util.Date utilDate = new java.util.Date();
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
@@ -162,7 +165,7 @@ public class HomeController {
         orden.setNumero(ordenServicio.generarNumeroOrden());
 
         //usuario
-        Usuario usuario = usuarioServicio.findById(1).get();
+        Usuario usuario = usuarioServicio.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
 
         orden.setUsuario(usuario);
         ordenServicio.save(orden);
