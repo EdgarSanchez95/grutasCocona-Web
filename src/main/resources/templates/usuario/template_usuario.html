@@ -14,7 +14,7 @@
 <body>
 
   <!--navegacion-->
-  <div th:fragment="header">
+  <div th:fragment="navegacion">
     <header class="header">
       <div class="menu container">
         <a th:href="@{/}" class="Logo">Las Grutas</a>
@@ -23,10 +23,9 @@
             autocomplete="off">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
-        <input type="checkbox" id="menu">
-        <label for="menu">
-          <img src="" class="menu-icono" alt="">
-        </label>
+
+        <img src="" class="menu-icono" alt="">
+
         <nav class="navbar">
           <ul>
             <li> <a th:href="@{/getCart}">Carrito</a></li>
@@ -48,9 +47,43 @@
     </header>
 
   </div>
-
   <!-- Page Content -->
-  
+
+ <div th:fragment="navegacion-user">
+    <header class="header">
+      <div class="menu container">
+        <a th:href="@{/}" class="Logo">Las Grutas</a>
+        <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="nombre"
+            autocomplete="off">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <input type="checkbox" id="menu">
+        <label for="menu">
+          <img src="" class="menu-icono" alt="">
+        </label>
+        <nav class="navbar">
+          <ul>
+            <li> <a href="#">Inicio</a></li>
+            <li> <a href="#">Servicios</a></li>
+            <li> <a th:href="@{/getCart}">Carrito</a></li>
+            <li> <a href="#">USER</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-content container">
+        <h1>Las Grutas Del Cocona</h1>
+        <p>
+          Las Grutas de Coconá se encuentran en un área natural protegida, bajo la denominación de Monumento
+          natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
+          ciudad de Villahermosa, capital del estado de Tabasco, México.
+        </p>
+        <a href="#" class="btn-1">Información</a>
+      </div>
+    </header>
+  </div>
+
 
   <!-- Footer -->
   <div th:fragment="footer">
@@ -64,9 +97,9 @@
         </p>
       </div>
     </footer>
-    
+
   </div>
-    <!-- Bootstrap core JavaScript -->
+  <!-- Bootstrap core JavaScript -->
   <script th:src="@{vendor/jquery/jquery.min.js}"></script>
   <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 

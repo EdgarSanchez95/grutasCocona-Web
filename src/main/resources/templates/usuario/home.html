@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8">
@@ -12,9 +12,9 @@
 
 <body>
 <!--navegacion-->
-  <div th:insert="~{usuario/template_usuario.html::header}">
+  <div th:insert="~{usuario/template_usuario.html::navegacion}" th:if="${sesion==null}"></div>
 
-  </div>
+ <div th:insert="~{usuario/template_usuario.html::navegacion-user}" th:unless="${sesion==null}"></div>
 
   <!-- Page Content -->
   <div class="container">

@@ -1,10 +1,15 @@
 
 
   <!--navegacion-->
-  <div th:fragment="header">
+  <div th:fragment="navegacion">
     <header class="header">
       <div class="menu container">
         <a th:href="@{/administrador}" class="Logo">Las Grutas</a>
+        <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="nombre"
+            autocomplete="off">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
         <input type="checkbox" id="menu">
         <label for="menu">
           <img src="" class="menu-icono" alt="">
