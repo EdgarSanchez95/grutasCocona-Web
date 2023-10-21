@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.proyecto.cocona.modelo.Orden;
+import com.proyecto.cocona.modelo.Usuario;
 import com.proyecto.cocona.repository.IOrdenRepository;
 
 @Service
@@ -56,4 +57,11 @@ public class OrdenServicioImple implements IOrdenServicio{
 
         return numeroConcatenado;
      }
+
+    @Override
+    public List<Orden> findByUsuario(Usuario usuario) {
+       return ordenRepository.findByUsuario(usuario);
+    }
+
+    
 }

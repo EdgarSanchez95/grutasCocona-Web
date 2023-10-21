@@ -1,5 +1,6 @@
 package com.proyecto.cocona.controlador;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.proyecto.cocona.modelo.Orden;
 import com.proyecto.cocona.modelo.Usuario;
+import com.proyecto.cocona.servicio.IOrdenServicio;
 import com.proyecto.cocona.servicio.IUsuarioServicio;
 
 import jakarta.servlet.http.HttpSession;
@@ -24,6 +27,9 @@ public class UsuarioController {
     
     @Autowired
     private IUsuarioServicio usuarioServicio;
+
+    @Autowired
+    private IOrdenServicio ordenServicio;
 
     // /usuario/registro
     @GetMapping("/registro")
@@ -69,6 +75,11 @@ public class UsuarioController {
     @GetMapping("/compras")
     public String obtenerCompras(Model model, HttpSession session ){
         model.addAttribute("sesion", session.getAttribute("idusuario"));
+
+        Usuario usuario = usuarioServicio.findById(Integer.parseInt(session.getAttribute("idusuario").toString())).get();
+        List<Orden> ordenes = ordenServicio.findByUsuario(usuario);
+
+        model.addAttribute("ordenes", ordenes);
         return "usuario/compras";
     }
 }

@@ -38,7 +38,7 @@ public class Orden {
     private Usuario usuario;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "orden") //relacion uno a uno
+    @OneToMany(mappedBy = "orden") //relacion uno a muchos
     private List<DetalleOrden> detalle;
     
     public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, Double total, Usuario usuario,
