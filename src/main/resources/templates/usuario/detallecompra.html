@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Grutas del Cocona</title>
+  <title></title>
   <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -28,12 +28,13 @@
 
       <!-- Page Heading/Breadcrumbs -->
       <h1 class="mt-4 mb-3">
-        Spring eCommerce <small>Compras</small>
+        Grutas del Cocona <small>Detalles</small>
       </h1>
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
-        <li class="breadcrumb-item active">Compras</li>
+        <li class="breadcrumb-item"><a th:href="@{/usuario/compras}">Compras</a></li>
+        <li class="breadcrumb-item active">Detalle de Compra</li>
       </ol>
 
       <!-- Blog Post -->
@@ -44,18 +45,18 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">No. de Orden</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Valor</th>
-                  <th scope="col">Acción</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Producto</th>                  
+                  <th scope="col">Precio</th>
+                  <th scope="col">Total</th>                  
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="orden: ${ordenes}">
-                  <td th:text="${orden.numero}"></td>
-                  <td th:text="${orden.fechaCreacion}"></td>
-                  <td th:text="${orden.total}"></td>
-                  <td><a th:href="@{/usuario/detalle/{id} (id=${orden.id})}" class="btn btn-success">Ver Detalle</a></td>
+                <tr th:each="detalle: ${detalles}">
+                  <td th:text="${detalle.cantidad}"></td>
+                  <td th:text="${detalle.nombre}"></td>
+                  <td th:text="${detalle.precio}"></td>
+                  <td th:text="${detalle.total}"></td>
                 </tr>
               </tbody>
             </table>
@@ -68,13 +69,11 @@
 
   <!-- Footer -->
   <div th:insert="~{usuario/template_usuario.html::footer}">
-    <!--footer-->
-  </div>
+</div>
 
-
-  <!-- Bootstrap core JavaScript -->
-  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
-  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- Bootstrap core JavaScript -->
+<script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 
