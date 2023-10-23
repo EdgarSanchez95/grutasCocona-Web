@@ -14,15 +14,21 @@
         <label for="menu">
           <img src="" class="menu-icono" alt="">
         </label>
-        <nav class="navbar">
-          <ul>
-            
-            <li> <a th:href="@{/productos}">Productos</a></li>
-            <li> <a th:href="@{/usuario/cerrar}">Salir</a></li>
-            <li> <a href="#">ADMIN</a></li>
-          </ul>
-        </nav>
+        <li class="nav-item dropdown"><a
+          class="nav-link dropdown-toggle" href="#"
+          id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"> ADMIN </a>
+          <div class="dropdown-menu"
+            aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" th:href="@{/productos}">Productos</a> 
+            <a class="dropdown-item" th:href="@{/administrador/usuarios}">Usuarios</a> 
+            <a class="dropdown-item" th:href="@{/usuario/cerrar}">Salir</a>
+          </div></li>
       </div>
+
+      <!--<li> <a th:href="@{/productos}">Productos</a></li>
+            <li> <a th:href="@{/usuario/cerrar}">Salir</a></li>
+            <li> <a href="#">ADMIN</a></li>-->
 
       <div class="header-content container">
         <h1>Las Grutas Del Cocona</h1>
@@ -31,7 +37,7 @@
           natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
           ciudad de Villahermosa, capital del estado de Tabasco, México.
         </p>
-        <a href="#" class="btn-1">Información</a>
+        <a th:href="@{/getActividades}" class="btn-1">Actividades</a>
       </div>
     </header><!--navegacion-->
   </div>

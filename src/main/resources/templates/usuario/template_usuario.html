@@ -62,15 +62,16 @@
         <label for="menu">
           <img src="" class="menu-icono" alt="">
         </label>
-        <nav class="navbar">
-          <ul>
-            
-            <li> <a th:href="@{/usuario/compras}">Mis Compras</a></li>
-            <li> <a th:href="@{/getCart}">Mi Carrito</a></li>
-            <li> <a th:href="@{/usuario/cerrar}">Salir</a></li>
-            <li> <a href="#">USER</a></li>
-          </ul>
-        </nav>
+        <li class="nav-item dropdown"><a
+          class="nav-link dropdown-toggle" href="#"
+          id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false"> USER </a>
+          <div class="dropdown-menu"
+            aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" th:href="@{/usuario/compras}">Mis Compras</a> 
+            <a class="dropdown-item" th:href="@{/getCart}">Mi Carrito</a>
+            <a class="dropdown-item" th:href="@{/usuario/cerrar}">Salir</a>
+          </div></li>
       </div>
 
       <div class="header-content container">
@@ -80,7 +81,7 @@
           natural, localizada en el cerro del mismo nombre, a solo 2 km de la ciudad de Teapa, y a 56 km de la
           ciudad de Villahermosa, capital del estado de Tabasco, México.
         </p>
-        <a href="#" class="btn-1">Información</a>
+        <a th:href="@{/getActividades}" class="btn-1">Actividades</a>
       </div>
     </header>
   </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proyecto.cocona.modelo.Producto;
+import com.proyecto.cocona.servicio.IUsuarioServicio;
 import com.proyecto.cocona.servicio.ProductoServicio;
 
 @Controller
@@ -18,11 +19,20 @@ public class AdministradorController {
     @Autowired
     private ProductoServicio productoServicio;
 
+    @Autowired
+    private IUsuarioServicio usuarioServicio;
+
     @GetMapping("")
     public String home(Model model){
 
         List<Producto> productos = productoServicio.findAll();
         model.addAttribute("productos", productos);
         return "administrador/homeAdministrador";
+    }
+
+    @GetMapping("/usuarios")
+    public String usuarios(Model model){
+        model.addAttribute("usuarios", usuarioServicio.findAll());
+        return "administrador/usuarios";
     }
 }

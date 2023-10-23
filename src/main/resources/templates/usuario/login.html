@@ -12,6 +12,7 @@
   <link rel="stylesheet" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
   <link rel="stylesheet" th:href="@{/css/styles.css}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="cl-icon/css/all.min.css">
 
 </head>
 
@@ -22,43 +23,27 @@
 
 
   <!-- Page Content -->
-  <div class="container">
-
-    <div class="card mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h3>Iniciar Sesion</h3>
-
-          </div>
-        </div>
+  <div class="wrapper">
+    <form class="form" th:action="@{/usuario/acceder}" method="post">
+      <h2 class="title" style="color: white;">Inicio</h2>
+      <div class="inp">
+        <input type="email" name="email" id="email" class="input" placeholder="Usuario">
+        <i class="fa-solid fa-user"></i>
       </div>
-    </div>
-
-    
-    <form th:action="@{/usuario/acceder}" method="post">
-      <div class="form-group">
-        <label for="email"> Email:  </label>      
-        <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su email" required autocomplete="off"> 
-
+      <div class="inp">
+        <input type="password" name="password" id="password" class="input" placeholder="Contraseña">
+        <i class="fa-solid fa-user"></i>
       </div>
-
-      <div class="form-group">
-        <label for="pwd"> Contraseña:</label>
-        <input type="password"  class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>       
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-2">
-          <button type="submit" class="btn btn-dark"> <span class="glyphicon glyphicon-ok"></span> Ingresar</button>
-        </div>      
-      </div>    
+      <button class="submit">Iniciar Sesion</button>
+      <p class="footer-pregunta" style="color: white;">¿No tienes una cuenta? <a th:href="@{/usuario/registro}" class="card-link">Por favor, Registrate</a></p>
+      
     </form>
-    <a th:href="@{/usuario/registro}" class="card-link">Si aún no tiene cuenta aqui puede registrarse</a>
+    <div></div>
+    <div class="banner-bienvenida">
+      <h1 class="wel_text">BIENVENIDO<br/></h1>
+      <p class="para">Gracias por visitarnos<br/>Grutas del Cocona<br/>@grutras.cocona</p>
+    </div>
   </div>
-  <!-- /.container -->
 
   <!-- Footer -->
   <div th:insert="~{usuario/template_usuario.html::footer}"></div>
